@@ -13,10 +13,12 @@ Actuellement, on a **6 TP** à réaliser pour valider la matière, mais ne t’i
 | TP3    | MongoDB+Node   | ❌ Pas fait       | 🛑 À faire |
 | TP4    | MongoDB+Java   | ❌ Pas fait       | 🛑 À faire |
 | TP5    | PostgreSQL   | ❌ Pas fait       | 🛑 À faire |
-| TP6    | Neo4J   | ❌ Pas fait       | 🛑 À faire |
+| TP6    | Neo4J   | ✅ Fait          | ✔️ Terminé |
 
 
 ![Progression des TP](https://img.shields.io/badge/Progression-16%25-brightgreen)
+
+🎉 **YOUPI ! Le TP6 est terminé !** On commence à ressembler à des experts des bases de données ! 👩‍💻👨‍💻
 
 ## 📝 Objectifs :
 
