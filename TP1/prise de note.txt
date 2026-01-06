@@ -1,0 +1,6 @@
+pas var ou let alors global 
+global en dehors elle existe toujours 
+perd le global en réaplant la donnée
+
+placement du require important
+

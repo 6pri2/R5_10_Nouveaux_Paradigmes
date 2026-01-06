@@ -1,0 +1,6 @@
+premier cas ajout de maj
+deuxiéme cas ajout d'un s
+troisiéme cas appplication sans fin / ne peut se lancer deux fois (avec load mongoose.deleteModel("nom de la collection"))
+collection tout en miniscule avec un s  
+versionKey : false pour enlever la version
+Bien mettre les await avec function async

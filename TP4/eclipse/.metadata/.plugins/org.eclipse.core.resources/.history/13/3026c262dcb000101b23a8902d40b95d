@@ -1,0 +1,143 @@
+package SQL;
+
+import java.sql.*;
+
+public class AppliSQL {
+	
+	 	private Connection conn;
+	 
+	    public void connecter() {
+	    	try {
+	    		Class.forName("mongodb.jdbc.MongoDriver");
+	    	} catch (Exception e) {
+	    		System.out.println("erreur driver");
+	            e.printStackTrace();
+	        }
+	        try {
+	            String url = "jdbc:mongo://127.0.0.1:27017/maBDDTP4"; 
+	            conn = DriverManager.getConnection(url,"","");
+
+	            System.out.println("Connection to the database has been established...");
+
+	            DatabaseMetaData meta = conn.getMetaData();
+	            System.out.println("Nom Driver JDBC : " + meta.getDriverName());
+	            System.out.println("Version Driver JDBC : " + meta.getDriverVersion());
+	            System.out.println("Nom BDD : " + meta.getDatabaseProductName());
+	            System.out.println("Version BDD : " + meta.getDatabaseProductVersion());
+
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	    }
+	    
+	    
+	    //attention on ne peux pas executer deux fois car on a mis un id en brut dans le code 
+	    public void insererDonnees() {
+	        try (Statement stmt = conn.createStatement()) {
+	            stmt.executeUpdate("INSERT INTO mesprofs (_id, nom, prenom, ecole) VALUES (1, 'Defromage', 'Stéfan', 8)");
+	            stmt.executeUpdate("INSERT INTO mesprofs (_id, nom, prenom, ecole) VALUES (2, 'Scolaire', 'Emmanuel', 7)");
+	            stmt.executeUpdate("INSERT INTO mesprofs (_id, nom, prenom, ecole) VALUES (3, 'Jort', 'Dany', 8)");
+	            stmt.executeUpdate("INSERT INTO mesprofs (_id, nom, prenom, ecole) VALUES (4, 'Tamboule', 'Athénaïs', 8)");
+	            stmt.executeUpdate("INSERT INTO mesprofs (_id, nom, prenom, ecole) VALUES (6, 'AngeEnPierre', 'Laure', 9)");
+	            stmt.executeUpdate("INSERT INTO mesprofs (_id, nom, prenom) VALUES (7, 'Bombadil', 'Tom')");
+
+	            System.out.println("Données insérées !");
+	            lireDonnees();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	    }
+	    
+	    public void lireDonnees() {
+	        try (Statement stmt = conn.createStatement()) {
+	            ResultSet rs = stmt.executeQuery("SELECT * FROM mesprofs");
+
+	            ResultSetMetaData meta = rs.getMetaData();
+	            int columnCount = meta.getColumnCount();
+	            
+	            for (int i = 1; i <= columnCount; i++) {
+	                System.out.print(meta.getColumnName(i));
+	                if (i < columnCount) System.out.print(", ");
+	            }
+	            System.out.println();
+
+	            while (rs.next()) {
+	                for (int i = 1; i <= columnCount; i++) {
+	                    System.out.print(rs.getString(i));
+	                    if (i < columnCount) System.out.print(", ");
+	                }
+	                System.out.println();
+	            }
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	    }
+
+	    public void modifierDonnees() {
+	        try (Statement stmt = conn.createStatement()) {
+	            stmt.executeUpdate("UPDATE mesprofs SET prenom = 'Etama' WHERE _id = 3");
+	            System.out.println("Données modifiées !");
+	            lireDonnees();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	    }
+
+	    public void supprimerDonnees() {
+	        try (Statement stmt = conn.createStatement()) {
+	            stmt.executeUpdate("DELETE FROM mesprofs WHERE _id = 6");
+	            stmt.executeUpdate("DELETE FROM mesprofs WHERE _id = 7");
+	            System.out.println("Données supprimées !");
+	            lireDonnees();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	    }
+	    
+	    public void resetData() {
+	        try (Statement stmt = conn.createStatement()) {
+	            stmt.executeUpdate("DELETE FROM mesprofs");
+	            System.out.println("Données réinitialisé !");
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	    }
+
+	    public void fermerConnexion() {
+	        try {
+	            if (conn != null && !conn.isClosed()) {
+	                conn.close();
+	                System.out.println("Connexion fermée !");
+	            }
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	    }
+
+	    public void lireDonneesEcoles() {
+	        try (Statement stmt = conn.createStatement()) {
+	            ResultSet rs = stmt.executeQuery("SELECT * FROM mesecoles");
+
+	            ResultSetMetaData meta = rs.getMetaData();
+	            int columnCount = meta.getColumnCount();
+	            
+	            for (int i = 1; i <= columnCount; i++) {
+	                System.out.print(meta.getColumnName(i));
+	                if (i < columnCount) System.out.print(", ");
+	            }
+	            System.out.println();
+
+	            while (rs.next()) {
+	                for (int i = 1; i <= columnCount; i++) {
+	                    System.out.print(rs.getString(i));
+	                    if (i < columnCount) System.out.print(", ");
+	                }
+	                System.out.println();
+	            }
+	        } catch (SQLException e) {
+	            System.out.println("Erreur dans lireDonneesEcoles : " + e.getMessage());
+	        }
+	    }
+
+	    
+}

@@ -1,0 +1,17 @@
+db.maCollec3.insertOne({ "_id" : "31" , ville : "Paris"     , pays : "France"     , pop : 2187526, loc : [ 15,20 ] }   )
+db.maCollec3.insertOne({ "_id" : "32" , ville : "Marseille" , pays : "France"     , pop : 862211 , loc : [ 16,28 ] }   )
+db.maCollec3.insertOne({ "_id" : "33" , ville : "Rouen"     , pays : "France"     , pop : 515695 , loc : [ 16,28 ] }   )
+db.maCollec3.insertOne({ "_id" : 32   , ville : "Caen"      , pays : "France"     , pop : 110000 , loc : [ 10,25 ] }   )
+db.maCollec3.insertOne({ "_id" : "34" , ville : "Ifs "      , pays : "France"     , pop : 1111500, loc : [ 01,05 ] }   )
+db.maCollec3.insertOne({ "_id" : "35" , ville : "Moult"     , pays : "France"     , pop : 3200   , loc : [ 00,00 ] }   )
+db.maCollec3.insertOne({ "_id" : "36" , ville : "Berlin"    , pays : "Allemagne"  , pop : 3748148, loc : [ 16,30 ] }   )
+db.maCollec3.insertOne({ "_id" : "37" , ville : "Hambourg"  , pays : "Allemagne"  , pop : 1645095, loc : [ 20,30 ] }   )
+db.maCollec3.insertOne({ "_id" : "38" , ville : "Munich"    , pays : "Allemagne"  , pop : 1298941, loc : [ 20,35 ] }   )
+db.maCollec3.insertOne({ "_id" : "42" , ville : "Glasgow"   , pays : "Royaume Uni", pop : 765030 , loc : [ 00,00 ] }   )
+db.maCollec3.insertOne({ "_id" : "43" , ville : "Birmingham", pays : "Royaume Uni", pop : 1013395, loc : [ 00,00 ] }   )
+db.maCollec3.insertOne({ "_id" : "44" , ville : "Londres"   , pays : "Royaume Uni", pop : 6574009, loc : [ 55,07 ] }   )
+db.maCollec3.insertOne({ "_id" : "45", ville :  "Rome"      , pays : "Italie"     , pop : 2855397, loc : [ 16,15 ] }   )
+db.maCollec3.insertOne({ "_id" : "46", ville :  "Milan"     , pays : "Italie"     , pop : 1378689, loc : [ 34,10 ] }   )
+db.maCollec3.insertOne({ "_id" : "47", ville :  "Naples"    , pays : "Italie"     , pop : 957075 , loc : [ 08,07 ] }   )
+
+

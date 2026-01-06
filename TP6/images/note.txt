@@ -1,0 +1,3 @@
+faire plutôt merge que create
+
+Faire plutôt match que merge

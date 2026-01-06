@@ -1,0 +1,20 @@
+{ "nom" : "Dubois" , "prenom" : "Maurice" , "age": 25 }
+{ "_id" : "1", "nom" : "Dubois", "prenom" : "Mauricette", "age" : 23 } 
+{ "_id" : 2, "nom" : "Dupont", "prenom" : "Bertrand", "age" : 28 }  
+{ "_id" : 3, "nom" : "Dulong", "prenom" : "Sylvie", "age" : 34 }  
+{ "_id" : "4", "nom" : "Dubois", "prenom" : "Sylvian" }  
+{ "_id" : "5", "nom" : "Delalune", "prenom" : "Claire" }  
+{ "_id" : 80, "nom" : "Frere", "prenom" : "Jacques", "age" : 22 }  
+{ "_id" : 11, "type" : "casserolle", "couleur" : "rouge", "matière" : "fonte" }  
+{ "_id" : 12, "type" : "casserolle", "couleur" : "verte", "matière" : "fer" }  
+{ "_id" : 5, "nom" : "Troj", "telephone" : { "portable" : "06 85 45 48 10" } }
+{ "_id" : 6, "nom" : "Super", "telephone": { "portable": "06 85 45 48 10", "fixe": "02 45 38 45 33" } }
+{ "_id" : 7, "nom" : "Super", "prenom" : "veronique", "telephone" : { "portable" : "06 80 23 48 12", "fixe" :  "02 32 41 22 16" } } 
+{ "_id" : 8, "nom" : "orange", "prenom" : "Enpierre", "age" : 36 } 
+{"_id" : 21 , "fruit":["orange","banane","pomme"] } 
+{"_id" : 22 , "fruit":["kiwi","banane","pomme"] } 
+{"_id" : 23 , "fruit":["kiwi","orange","poire"] } 
+{"_id" : 24 , "fruit":["cerise","peche","citron"] } 
+{"_id" : 25 , "fruit":["cerise","banane","orange"] } 
+{"_id" : 26 , "fruit":["orange","pomme","raisin"] } 
+{"_id" : "27" , "fruit":["orange","prune","cerise"] }

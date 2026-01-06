@@ -1,0 +1,29 @@
+package SQL;
+
+public class Main {
+	    public static void main(String[] args) {
+	        AppliSQL db = new AppliSQL();
+
+	        db.connecter();
+
+	        // Création de la collection mesecoles et insertion initiale
+	        db.insererDonnees();
+
+	        // Lecture
+	        db.lireDonnees();
+
+	        // Modification
+	        db.modifierDonnees();
+	        db.lireDonnees();
+
+	        // Suppression
+	        db.supprimerDonnees();
+	        db.lireDonnees();
+
+	        // Lecture d’une autre collection
+	        db.lireDonneesEcoles();
+
+	        db.fermerConnexion();
+	    }
+	}
+

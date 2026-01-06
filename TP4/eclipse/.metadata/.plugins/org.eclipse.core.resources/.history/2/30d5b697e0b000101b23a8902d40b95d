@@ -1,0 +1,113 @@
+package mongoNoSQL;
+
+import com.mongodb.client.*;
+import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Updates;
+import org.bson.Document;
+import org.bson.conversions.Bson;
+
+import java.util.Arrays;
+
+public class AppliNoSQL {
+
+    public static void main(String[] args) {
+        // Connexion à MongoDB
+        String uri = "mongodb://localhost:27017"; // adapte si nécessaire
+        try (MongoClient mongoClient = MongoClients.create(uri)) {
+
+            // Affiche la base de données utilisée
+            MongoDatabase database = mongoClient.getDatabase("maBDDTP4");
+            System.out.println("Connecté à la base : " + database.getName());
+
+            // Liste des collections
+            System.out.println("Collections existantes :");
+            for (String name : database.listCollectionNames()) {
+                System.out.println(" - " + name);
+            }
+
+            // Accès à la collection mes_jdbc_profs
+            MongoCollection<Document> collection = database.getCollection("mes_jdbc_profs");
+
+            // On vide la collection pour recommencer proprement
+            collection.drop();
+            database.createCollection("mes_jdbc_profs");
+            collection = database.getCollection("mes_jdbc_profs");
+
+            // === Insertion des données initiales ===
+            insererDonnees(collection);
+
+            // === Lecture des données ===
+            lireDonnees(collection);
+
+            // === Insertion d’un nouveau prof ===
+            insererUnNouveauProf(collection);
+
+            // === Lecture après insertion ===
+            lireDonnees(collection);
+
+            // === Modification d’une donnée ===
+            modifierDonnees(collection);
+
+            // === Lecture après modification ===
+            lireDonnees(collection);
+
+            // === Suppression de certaines données ===
+            supprimerDonnees(collection);
+
+            // === Lecture après suppression ===
+            lireDonnees(collection);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Méthode d’insertion initiale
+    public static void insererDonnees(MongoCollection<Document> collection) {
+        collection.insertMany(Arrays.asList(
+            new Document("_id", 1).append("nom", "Deraclette").append("prenom", "Stéfan").append("ecole", "8"),
+            new Document("_id", 2).append("nom", "Scolaire").append("prenom", "Emmanuel").append("ecole", "7"),
+            new Document("_id", 3).append("nom", "Jort").append("prenom", "Dany").append("ecole", "8"),
+            new Document("_id", 4).append("nom", "Téria").append("prenom", "Alice").append("ecole", "8"),
+            new Document("_id", 5).append("nom", "Royce").append("prenom", "Carole").append("ecole", "8"),
+            new Document("_id", 6).append("nom", "Dinateur").append("prenom", "Laure").append("ecole", "9")
+        ));
+        System.out.println("Documents insérés !");
+    }
+
+    // Méthode de lecture
+    public static void lireDonnees(MongoCollection<Document> collection) {
+        System.out.println("=== Contenu de la collection ===");
+        FindIterable<Document> docs = collection.find().projection(new Document("_id", 0));
+        for (Document d : docs) {
+            System.out.println(d);
+        }
+    }
+
+    // Ajout d’un nouveau prof
+    public static void insererUnNouveauProf(MongoCollection<Document> collection) {
+        Document nouveau = new Document("_id", 7)
+                .append("nom", "Bombadil")
+                .append("prenom", "Tom")
+                .append("ecole", "7");
+        collection.insertOne(nouveau);
+        System.out.println("Nouveau prof inséré !");
+    }
+
+    // Modification d’une donnée
+    public static void modifierDonnees(MongoCollection<Document> collection) {
+        Bson filtre = Filters.eq("nom", "Jort");
+        Bson miseAJour = Updates.set("prenom", "Etama");
+        var result = collection.updateOne(filtre, miseAJour);
+        System.out.println("Données modifiées " + result);
+    }
+
+    // Suppression de certaines données
+    public static void supprimerDonnees(MongoCollection<Document> collection) {
+        // Exemple : supprimer les profs de l’école 9 ou 8 avec prenom "Carole"
+        Bson filtre = Filters.or(Filters.eq("ecole", "9"), Filters.eq("prenom", "Carole"));
+        var result = collection.deleteMany(filtre);
+        System.out.println("Deleted document count: " + result.getDeletedCount());
+    }
+}
+

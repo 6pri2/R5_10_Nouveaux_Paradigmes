@@ -1,0 +1,10 @@
+db.maCollec2.insertOne({ "_id" : "1", "titre" : "Les misérables", "auteur" : "Victor Hugo", "nbExemplaires" : 100 }   )
+db.maCollec2.insertOne({ "_id" : "2", "titre" : "Notre-Dame de Paris", "auteur" : "Victor Hugo", "nbExemplaires" : 30 }   )
+db.maCollec2.insertOne({ "_id" : "3", "titre" : "La Bête humaine", "auteur" : "Emile Zola", "nbExemplaires" : 19 }  )
+db.maCollec2.insertOne({ "_id" : "4", "titre" : "Germinal", "auteur" : "Emile Zola", "nbExemplaires" : 100 }   )
+db.maCollec2.insertOne({ "_id" : "6", "titre" : "Notre-Dame de Paris le retour", "auteur" : "Victor Hugo", "nbExemplaires" : 20 }   )
+db.maCollec2.insertOne({ "_id" : "7", "titre" : "Notre-Dame de Paris contre les misérables", "auteur" : "Victor Hugo","nbExemplaires" : 40 }   )
+db.maCollec2.insertOne({ "_id" : "9", "titre" : "Le Dernier Jour d'un confiné", "auteur" : "Victor Hugo", "nbExemplaires" : 64 }   )
+
+
+
