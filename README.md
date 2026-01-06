@@ -18,6 +18,12 @@ Actuellement, on a **6 TP** à réaliser pour valider la matière, mais ne t’i
 
 ![Progression des TP](https://img.shields.io/badge/Progression-33%25-brightgreen)
 
+### 📈 Progression des TP (33%)
+
+<div style="width: 100%; background-color: #e0e0e0; border-radius: 5px;">
+  <div style="width: 33%; background-color: #4caf50; padding: 6px 0; border-radius: 5px;"></div>
+</div>
+
 🎉 **YOUPI ! Le TP6 est terminé !** On commence à ressembler à des experts des bases de données ! 👩‍💻👨‍💻
 
 ## 📝 Objectifs :
@@ -59,3 +65,16 @@ Ou, si tu préfères, lâche un peu de magie avec des **émojis de confettis** :
 
 🔔 **N’oublie pas** : l’important, c'est de participer, de rigoler et d'avancer ensemble. On n’est pas là pour se prendre la tête !
 
+### 🎉 Célébration !
+
+<svg width="100%" height="120" viewBox="0 0 600 120" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="50" cy="10" r="4" fill="red">
+    <animate attributeName="cy" from="0" to="120" dur="1.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="150" cy="10" r="4" fill="gold">
+    <animate attributeName="cy" from="0" to="120" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="250" cy="10" r="4" fill="lime">
+    <animate attributeName="cy" from="0" to="120" dur="1.8s" repeatCount="indefinite"/>
+  </circle>
+</svg>
