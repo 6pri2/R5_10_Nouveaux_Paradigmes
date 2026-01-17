@@ -1,0 +1,15 @@
+package essaiGraphique;
+
+public class Coureur {
+	
+	protected String num;
+	protected String nom;
+	protected String prenom;
+	protected String anneeNaissance;
+	protected String anneePrem;
+
+	public Coureur() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

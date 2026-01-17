@@ -1,0 +1,81 @@
+package essaiGraphique;
+
+import javax.swing.JFrame;
+import java.awt.Dimension;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import net.miginfocom.swing.MigLayout;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JComboBox;
+import javax.swing.JButton;
+import java.awt.Component;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+
+public class FenetreCoureur extends JFrame {
+	private JTextField textFieldNom;
+	private JTextField textFieldPrenom;
+	public FenetreCoureur() {
+		setPreferredSize(new Dimension(800, 420));
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setTitle("Les Coureurs");
+		pack();
+		getContentPane().setLayout(new MigLayout("", "[200,grow][200][200][200]", "[50][50][grow]"));
+		
+		JLabel labelNom = new JLabel("Nom:");
+		getContentPane().add(labelNom, "flowx,cell 0 0");
+		
+		textFieldNom = new JTextField();
+		getContentPane().add(textFieldNom, "cell 0 0");
+		textFieldNom.setColumns(10);
+		
+		JLabel labelPrenom = new JLabel("Prénom:");
+		getContentPane().add(labelPrenom, "flowx,cell 1 0");
+		
+		textFieldPrenom = new JTextField();
+		getContentPane().add(textFieldPrenom, "cell 1 0");
+		textFieldPrenom.setColumns(10);
+		
+		JLabel labelNaissance = new JLabel("Ann. Naissance");
+		getContentPane().add(labelNaissance, "flowx,cell 2 0");
+		
+		JComboBox comboBoxAnneeNaissance = new JComboBox();
+		getContentPane().add(comboBoxAnneeNaissance, "cell 2 0");
+		for (int i = 1900; i<=2025; i++) {
+			comboBoxAnneeNaissance.addItem(i);
+		}
+		
+		JLabel labelAnneePrem = new JLabel("New label");
+		getContentPane().add(labelAnneePrem, "flowx,cell 3 0");
+		
+		JButton buttonCreer = new JButton("Créer");
+		buttonCreer.setAlignmentX(Component.CENTER_ALIGNMENT);
+		getContentPane().add(buttonCreer, "cell 0 1,alignx center,aligny center");
+		
+		JButton buttonSupprimer = new JButton("Supprimer");
+		getContentPane().add(buttonSupprimer, "cell 1 1,alignx center,aligny center");
+		
+		JButton buttonVoir = new JButton("Voir");
+		getContentPane().add(buttonVoir, "cell 2 1 2 1,alignx center,aligny center");
+		
+		JComboBox comboBoxAnneePrem = new JComboBox();
+		getContentPane().add(comboBoxAnneePrem, "cell 3 0");
+		
+		JScrollPane scrollPaneCoureur = new JScrollPane();
+		getContentPane().add(scrollPaneCoureur, "cell 0 2 4 1,grow");
+		
+		JTextArea textArea = new JTextArea();
+		scrollPaneCoureur.setViewportView(textArea);
+		setVisible(true);
+		addWindowListener(new fermerFenetre());
+	}
+	private class fermerFenetre extends WindowAdapter
+	{
+		@Override
+		public void windowClosing(WindowEvent e) {
+			System.exit(0);
+		}
+	}
+
+}

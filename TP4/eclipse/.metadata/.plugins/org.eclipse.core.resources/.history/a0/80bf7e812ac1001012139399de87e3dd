@@ -1,0 +1,9 @@
+package essaiGraphique;
+
+public class Coureur {
+
+	public Coureur() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

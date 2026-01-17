@@ -1,0 +1,9 @@
+package essaiGraphique;
+
+public class MongoNoSQL {
+
+	public MongoNoSQL() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

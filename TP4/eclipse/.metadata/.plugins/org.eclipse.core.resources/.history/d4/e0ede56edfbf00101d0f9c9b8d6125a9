@@ -1,0 +1,25 @@
+package essaiGraphique;
+
+import javax.swing.JFrame;
+import java.awt.Dimension;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+public class FenetreCoureur extends JFrame {
+	public FenetreCoureur() {
+		setPreferredSize(new Dimension(800, 420));
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setTitle("Les Coureurs");
+		pack();
+		setVisible(true);
+		addWindowListener(new fermerFenetre());
+	}
+	private class fermerFenetre extends WindowAdapter
+	{
+		@Override
+		public void windowClosing(WindowEvent e) {
+			System.exit(0);
+		}
+	}
+
+}

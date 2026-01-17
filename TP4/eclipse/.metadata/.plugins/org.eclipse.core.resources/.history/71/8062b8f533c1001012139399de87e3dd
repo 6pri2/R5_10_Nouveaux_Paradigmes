@@ -1,0 +1,78 @@
+package essaiGraphique;
+
+import com.mongodb.client.*;
+import com.mongodb.client.model.Filters;
+import com.mongodb.client.model.Updates;
+import org.bson.Document;
+import org.bson.conversions.Bson;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
+//savoir utiliser critere de cri, de projection et de restriction
+
+public class AppliNoSQL {
+	
+	//pour avoir la chaine de connexion dans mongosh taper : db.getMongo()
+	//ou mettre basique juste avec adresse et port
+	
+	private MongoClient mongoClient;
+	private MongoDatabase database;
+	private MongoCollection<Document> collection;
+
+	public AppliNoSQL(){
+		String uri = "mongodb://localhost:27017";
+    	mongoClient = MongoClients.create(uri);
+    	database = mongoClient.getDatabase("maBDDTP4");
+        System.out.println("Connecté à la base : " + database.getName());
+        database.listCollectionNames().forEach(System.out::println);
+        collection = database.getCollection("mescoureurs");
+        System.out.println(collection.getNamespace());
+	}
+    
+    
+    //retenir lire donnees avec filtres
+    // Méthode de lecture
+    public ArrayList<Coureur> lireDonnees(String nom, String prenom, String anneNaiss, String annePrem ) {
+    	ArrayList<Coureur> liste = new ArrayList<Coureur>();
+    	Bson filtre = Filters.and(Filters.eq("nom",nom),Filters.eq("prenom",prenom),Filters.eq("anneeNaissance",anneNaiss),Filters.eq("anneePrem",annePrem) );
+        FindIterable<Document> docs = collection.find(filtre).projection(new Document("_id", 0));
+        for (Document d : docs) {
+            liste.add(new Coureur(d.getString("id"),d.getString("nom"),d.getString("prenom"),d.getString("anneeNaissance"),d.getString("anneePrem")));
+        }
+        return liste;
+    }
+    
+
+    // Ajout d’un nouveau prof
+    public void Ajouter(String nom, String prenom, String anneNaiss, String annePrem) {
+        Document nouveau = new Document("nom", nom)
+                .append("prenom", prenom)
+                .append("anneNaissance", anneNaiss)
+        		.append("annePrem", annePrem);
+        collection.insertOne(nouveau);
+        System.out.println("Nouveau coureur inséré !");
+    }
+
+    // Modification d’une donnée
+    public void modifier() {
+        Bson filtre = Filters.eq("nom", "Jort");
+        Bson miseAJour = Updates.set("prenom", "Etama");
+        var result = collection.updateOne(filtre, miseAJour);
+        System.out.println("Données modifiées " + result);
+    }
+
+    // Suppression de certaines données
+    public void supprimer(String nom, String prenom) {
+        // Exemple : supprimer les profs de l’école 9 ou 8 avec prenom "Carole"
+        Bson filtre = Filters.and(Filters.eq("prenom", prenom), Filters.eq("nom", nom));
+        var result = collection.deleteMany(filtre);
+        System.out.println("Deleted document count: " + result.getDeletedCount());
+    }
+    
+    public void fermerConnexion() {
+    	mongoClient.close();
+    	collection = null;
+    }
+}
+
