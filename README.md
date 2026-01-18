@@ -12,7 +12,7 @@ Actuellement, on a **6 TP** à réaliser pour valider la matière, mais ne t’i
 | TP2    | MongoDB   | ✅ Fait          | ✔️ Terminé |
 | TP3    | MongoDB+Node   | ❌ Pas fait       | 🛑 À faire |
 | TP4    | MongoDB+Java   | ❌ Pas fait       | 🛑 À faire |
-| TP5    | PostgreSQL   | ❌ Pas fait       | 🛑 À faire |
+| TP5    | PostgreSQL   | ✅ Fait          | ✔️ Terminé |
 | TP6    | Neo4J   | ✅ Fait          | ✔️ Terminé |
 
 
